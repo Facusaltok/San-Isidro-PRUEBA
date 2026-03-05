@@ -1325,8 +1325,11 @@ const tabs = {
     row: r => [r.fecha, r.hora_inicio||"--:--", r.hora_fin||"--:--", formatMoney(r.caja_chica), (r.cabina||r.otros||"").toString().slice(0,60)+"…", actions(r.id)],
     icon: "fas fa-clipboard-list",
     color: "amber"
-  }, 
-  novedades: {
+  parte: {
+ ...
+},
+
+novedades: {
   table: "novedades",
   head: ["Fecha","Turno","Operador","Prioridad","Novedad",""],
   fields: [
@@ -1346,7 +1349,7 @@ const tabs = {
   ],
   icon: "fas fa-book",
   color: "amber"
-},
+}
 
 const thead = byId("thead"), rows = byId("rows"), empty = byId("empty"), errEl = byId("err");
 const tableIcon = byId("tableIcon"), tableTitle = byId("tableTitle"), recordCount = byId("recordCount");
