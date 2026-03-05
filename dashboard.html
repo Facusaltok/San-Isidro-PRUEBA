@@ -1039,6 +1039,9 @@
           <button data-tab="parte" class="tab">
             <i class="fas fa-clipboard-list mr-2"></i>Parte diario
           </button>
+          <button data-tab="novedades" class="tab">
+<i class="fas fa-book mr-2"></i>Novedades
+</button>
         </nav>
 
         <div class="filters-container">
@@ -1322,8 +1325,28 @@ const tabs = {
     row: r => [r.fecha, r.hora_inicio||"--:--", r.hora_fin||"--:--", formatMoney(r.caja_chica), (r.cabina||r.otros||"").toString().slice(0,60)+"…", actions(r.id)],
     icon: "fas fa-clipboard-list",
     color: "amber"
-  }
-};
+  }, 
+  novedades: {
+  table: "novedades",
+  head: ["Fecha","Turno","Operador","Prioridad","Novedad",""],
+  fields: [
+    {k:"fecha", l:"Fecha", t:"date", r:true},
+    {k:"turno", l:"Turno", t:"select", p:["Mañana","Tarde","Noche"], r:true},
+    {k:"operador", l:"Operador", t:"text"},
+    {k:"prioridad", l:"Prioridad", t:"select", p:["Normal","Importante","Urgente"]},
+    {k:"novedad", l:"Novedad", t:"textarea", r:true}
+  ],
+  row: r => [
+    r.fecha,
+    r.turno,
+    r.operador,
+    r.prioridad,
+    r.novedad,
+    actions(r.id)
+  ],
+  icon: "fas fa-book",
+  color: "amber"
+},
 
 const thead = byId("thead"), rows = byId("rows"), empty = byId("empty"), errEl = byId("err");
 const tableIcon = byId("tableIcon"), tableTitle = byId("tableTitle"), recordCount = byId("recordCount");
